@@ -7,11 +7,8 @@
     <%= c.label :body, 'Comment text' %>
     <%= c.text_field :body %>
   <% end %>
+
+<%= render :partial => 'sites/new' %>
+
   <%= f.submit "Add" %>
 <% end %>
-
-<h2>Check to see if your link is valid</h2>
-<%= form_for @site do |f| %>
-  <%= f.text_field :url %>
-  <%= f.submit %>
-<% end %> 

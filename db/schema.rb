@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213041825) do
+ActiveRecord::Schema.define(version: 20140213061703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,14 @@ ActiveRecord::Schema.define(version: 20140213041825) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "links", force: true do |t|
-    t.string   "link"
+    t.string   "url"
     t.integer  "http_response"
-    t.integer  "post_id"
+    t.integer  "site_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "links", ["post_id"], name: "index_links_on_post_id", using: :btree
+  add_index "links", ["site_id"], name: "index_links_on_site_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "link"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 20140213041825) do
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "sites", force: true do |t|
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
