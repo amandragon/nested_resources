@@ -3,9 +3,15 @@
   <%= f.text_field :link %> 
   <%= f.label :body %>
   <%= f.text_field :body %> 
-  <%= f.fields_for :comments, @post.comments.build do |c| %>
+  <%= f.fields_for :comments, @post.comments do |c| %>
     <%= c.label :body, 'Comment text' %>
     <%= c.text_field :body %>
   <% end %>
   <%= f.submit "Add" %>
 <% end %>
+
+<h2>Check to see if your link is valid</h2>
+<%= form_for @site do |f| %>
+  <%= f.text_field :url %>
+  <%= f.submit %>
+<% end %> 
